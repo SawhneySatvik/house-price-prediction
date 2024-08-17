@@ -1,6 +1,6 @@
 # House Price Prediction Model
 
-### For Deployment
+### For Deployment Purposes
 
 Make sure you have a [HerokuAccount](https://heroku.com)
 
