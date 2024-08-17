@@ -1,11 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>California House Price Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007BFF;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            padding: 12px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-header {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello World</h1>
+    <div class="container">
+        <h1>California House Price Predictor</h1>
+        <h3>Please fill in the below form -- ></h3>
+        <div class="form-header"></div>
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="MedInc" placeholder="Median Income" required="required">
+            <input type="text" name="HouseAge" placeholder="House Age" required="required">
+            <input type="text" name="AveRooms" placeholder="Number of Rooms" required="required">
+            <input type="text" name="AveBedrms" placeholder="Number of Bedrooms" required="required">
+            <input type="text" name="Population" placeholder="Population in the Locality" required="required">
+            <input type="text" name="AveOccup" placeholder="Average Household Members" required="required">
+            <input type="text" name="Latitude" placeholder="Latitude" required="required">
+            <input type="text" name="Longitude" placeholder="Longitude" required="required">
+            <button type="submit">Predict Price</button>
+        </form>
+
+        <h3>{{prediction_text}}</h3>
+    </div>
 </body>
+
 </html>
